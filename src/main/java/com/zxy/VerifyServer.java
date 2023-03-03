@@ -13,7 +13,6 @@ public class VerifyServer {
         try {
             ServerSocket ssoc = new ServerSocket(25665);
             File file = new File(System.getProperty("user.dir"));
-            System.out.println(file);
             file = new File(file + "\\printerWhitelist.txt");
             file.createNewFile();
             new Thread(() -> {
@@ -27,12 +26,10 @@ public class VerifyServer {
                                 if("投影打印机使用请求, 玩家ID: UUID:".equals(br.readLine())){
                                     String id = br.readLine();
                                     String uid = br.readLine();
-                                    System.out.println(id);
-                                    System.out.println(uid);
+                                    System.out.println("玩家"+id+"正在请求使用投影打印机"+"uuid: " +uid);
                                     String listid;
                                     String yz = "拒绝";
                                     while((listid = whitelist.readLine())!=null){
-                                        System.out.println(listid);
                                         if(listid.equals(id) || listid.equals(uid)){
                                             yz = "允许";
                                             break;
@@ -40,9 +37,9 @@ public class VerifyServer {
                                             yz = "拒绝";
                                         }
                                     }
+                                    System.out.println("已"+yz);
                                     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(soc.getOutputStream()));
                                     bw.write(yz);
-                                    System.out.println("允许".equals(yz)+"   "+"拒绝".equals(yz));
                                     bw.newLine();
                                     bw.flush();
 
@@ -52,6 +49,7 @@ public class VerifyServer {
                                     soc.close();
                                 }
                             } catch (IOException e) {
+                                System.out.println("fileThrows");
                                 e.printStackTrace();
                             }
                         }).start();
