@@ -22,9 +22,7 @@
 	],
 	"depends": {
 		"fabricloader": "*",
-		"minecraft": "*",
-		"java": "*",
-		"fabric-api": "*"
+		"minecraft": "*"
 	},
 	"suggests": {
 		"another-mod": "*"
