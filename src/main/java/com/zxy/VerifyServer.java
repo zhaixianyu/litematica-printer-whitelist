@@ -22,7 +22,7 @@ public class VerifyServer {
     public void startVerify(){
         try {
             File file = new File(System.getProperty("user.dir"));
-            file = new File(file + "\\printerWhitelist.txt");
+            file = new File(file + File.separator +"printerWhitelist.txt");
             file.createNewFile();
             File finalFile = file;
             new Thread(() -> {
@@ -66,6 +66,7 @@ public class VerifyServer {
                 }
             }).start();
         } catch (IOException e) {
+            System.out.println("?????????");
             e.printStackTrace();
         }
     }
