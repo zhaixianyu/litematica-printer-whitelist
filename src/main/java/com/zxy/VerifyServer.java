@@ -12,6 +12,10 @@ public class VerifyServer {
     }
     public static boolean run  = true;
     public static ServerSocket ssoc;
+
+    public static void main(String[] args) {
+        new VerifyServer().startVerify();
+    }
     static {
         try {
             ssoc = new ServerSocket(25665);
@@ -66,7 +70,6 @@ public class VerifyServer {
                 }
             }).start();
         } catch (IOException e) {
-            System.out.println("?????????");
             e.printStackTrace();
         }
     }
